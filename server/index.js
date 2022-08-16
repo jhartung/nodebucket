@@ -3,9 +3,15 @@
  */
 const express = require('express');
 const path = require('path');
+const http = require('http');
+const swaggerUiExpress = require('swagger-ui-express');
+const swaggerJsdoc = require('swagger-jsdoc');
 const mongoose = require('mongoose');
+const EmployeeApi = require('./routes/employee-api');
 
 const app = express(); // Express variable.
+
+
 
 /**
  * App configurations.
@@ -18,8 +24,24 @@ app.use('/', express.static(path.join(__dirname, '../dist/nodebucket')));
 // default server port value.
 const PORT = 3000 || process.env.PORT;
 
-// TODO: This line will be replaced with your database connection string (including username/password).
-const CONN = 'mongodb+srv://superadmin:s3cret@cluster0-lujih.mongodb.net/nodebucket?retryWrites=true&w=majority';
+const options = {
+  definition: {
+    openapi: "3.0.0",
+    info: {
+      title: "nodebucket",
+      version: "1.0.0"
+    },
+  },
+  apis: ['./routes/*.js'],
+};
+
+const openapiSpecifications = swaggerJsdoc(options);
+
+app.use('/api-docs', swaggerUiExpress.serve, swaggerUiExpress.setup(openapiSpecifications));
+app.use('/api', EmployeeApi);
+
+// Database connection string
+const CONN = 'mongodb+srv://nodebucket_user:s3cret@cluster0.580azmi.mongodb.net/employees?retryWrites=true&w=majority';
 
 /**
  * Database connection.
@@ -29,6 +51,8 @@ mongoose.connect(CONN).then(() => {
 }).catch(err => {
   console.log('MongoDB Error: ' + err.message);
 });
+
+
 
 // Wire-up the Express server.
 app.listen(PORT, () => {
