@@ -32,7 +32,7 @@ const options = {
       version: "1.0.0"
     },
   },
-  apis: ['./routes/*.js'],
+  apis: [`${__dirname}/routes/*.js`],
 };
 
 const openapiSpecifications = swaggerJsdoc(options);
