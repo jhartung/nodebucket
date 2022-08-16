@@ -41,7 +41,7 @@ app.use('/api-docs', swaggerUiExpress.serve, swaggerUiExpress.setup(openapiSpeci
 app.use('/api', EmployeeApi);
 
 // Database connection string
-const CONN = 'mongodb+srv://nodebucket_user:s3cret@cluster0.580azmi.mongodb.net/employees?retryWrites=true&w=majority';
+const CONN = 'mongodb+srv://nodebucket_user:s3cret@cluster0.580azmi.mongodb.net/nodebucket?retryWrites=true&w=majority';
 
 /**
  * Database connection.
