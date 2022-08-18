@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -20,7 +21,7 @@ export class LoginComponent implements OnInit {
     employeeId: [null, Validators.compose([Validators.required, Validators.pattern('^[0-9]*$')])]
   })
 
-  constructor(private fb: FormBuilder, private router: Router, private cookieService: CookieService, private sessionService: SessionService) {
+  constructor(private fb: FormBuilder, private router: Router, private cookieService: CookieService, private http: HttpClient, private sessionService: SessionService) {
     this.employee = {} as Employee;
   }
 
@@ -58,8 +59,7 @@ export class LoginComponent implements OnInit {
               detail: e.message
             }
           ]
-
-      },
+      }
     })
   }
 }
