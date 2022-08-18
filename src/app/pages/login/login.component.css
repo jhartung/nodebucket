@@ -1,0 +1,11 @@
+.login-container {
+  width: 35%;
+  margin: 10% auto;
+}
+
+.login-title {
+  test-align: center;
+  font-weight: lighter;
+  padding: 5 px;
+
+}
