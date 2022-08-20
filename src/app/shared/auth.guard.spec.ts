@@ -1,3 +1,12 @@
+/*
+============================================
+; Title: Nodebucket (Week 2 - Sprint 1)
+; Author: Professor Krasso
+; Date: 20 August 2022
+; Modified By: Joel Hartung
+;===========================================
+*/
+
 import { TestBed } from '@angular/core/testing';
 
 import { AuthGuard } from './auth.guard';

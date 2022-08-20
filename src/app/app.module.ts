@@ -1,6 +1,15 @@
+/*
+============================================
+; Title: Nodebucket (Week 2 - Sprint 1)
+; Author: Professor Krasso
+; Date: 20 August 2022
+; Modified By: Joel Hartung
+;===========================================
+*/
+
+// import statements
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';

@@ -1,5 +1,20 @@
-<div fxLayout="column">
+<!--
+============================================
+; Title: Nodebucket (Week 2 - Sprint 1)
+; Author: Professor Krasso
+; Date: 20 August 2022
+; Modified By: Joel Hartung
+; Code Attribution: Angular Flex Layout
+; URL: https://github.com/angular/flex-layout
+; Code Attribution: PrimeNG
+; URL: https://www.primefaces.org/primeng/
+; Code Attribution: Forms Module
+; URL: https://angular.io/api/forms/NgForm
+;===========================================
+-->
 
+<!-- utilizes angular flex layout -->
+<div fxLayout="column">
   <mat-card fxFlex class="login-container">
     <mat-card-header>
       <mat-card-title class="login-title">
@@ -11,22 +26,27 @@
       </mat-card-title>
     </mat-card-header>
     <mat-card-content>
+      <!-- p-messages from PrimeNg -->
       <p-messages [(value)]="errorMessages" [enableService]="false"></p-messages>
       <mat-card class="mat-elevation-z0" fxLayout="column" fxLayoutGap="10px">
+        <!-- employee login form - on submit, the login() function is triggered and the login form is reset -->
         <form [formGroup]="loginForm" (ngSubmit)="login(); loginForm.reset();">
           <mat-card-content class="mat-elevation-z0">
             <mat-form-field appearance="fill" style="width: 100%;">
               <input matInput formControlName="employeeId" placeholder="Employee ID" />
+              <!-- error message to ensure an employee ID has been entered -->
               <mat-error *ngIf="loginForm.controls['employeeId'].hasError('required') && loginForm.controls['employeeId'].touched">
                 Employee ID is a required field.
               </mat-error>
+              <!-- error message to ensure an employee ID is a numerical value -->
               <mat-error *ngIf="loginForm.controls['employeeId'].hasError('pattern') && loginForm.controls['employeeId'].touched">
                 Employee ID must be a numerical value.
               </mat-error>
             </mat-form-field>
           </mat-card-content>
           <mat-card-actions>
-            <button type="submit" fxFlex mat-raised-button [disabled]="!loginForm.valid" color="primary" style="height: 50px; font-size: 18px;">Log in</button>
+            <!-- the submit button is only clickable if a value has been entered in the login form -->
+            <button type="submit" fxFlex mat-raised-button [disabled]="!loginForm.valid" style="height: 50px; font-size: 18px; background-color: #740001; color: white;">Log in</button>
           </mat-card-actions>
         </form>
       </mat-card>

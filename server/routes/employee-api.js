@@ -1,9 +1,24 @@
+/*
+============================================
+; Title: Nodebucket (Week 2 - Sprint 1)
+; Author: Professor Krasso
+; Date: 20 August 2022
+; Modified By: Joel Hartung
+; Code Attribution: OpenAPI Specifications
+; URL: https://swagger.io/specification/
+; Code Attribution: db.collection.findOne
+; URL: https://www.mongodb.com/docs/manual/reference/method/db.collection.findOne/
+; Code Attribution: Try... Catch
+; URL: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch
+;===========================================
+*/
+
+// require statements
 const express = require('express');
 const router = express.Router();
 const Employee = require('../models/employee');
 
-
-
+// YAML code to describe the findEmployeesById API
 /**
  * findEmployeeById
  * @openapi
@@ -31,8 +46,10 @@ const Employee = require('../models/employee');
  *         description: MongoDB exception
  */
 
+// API specifications
 router.get('/employees/:employeeId', async(req, res) => {
   try {
+    // finds the employee by employee ID, or returns an error message
     Employee.findOne({'employeeId': req.params.employeeId}, function(err, employee) {
       if (err) {
         console.log(err);

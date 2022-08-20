@@ -1,24 +1,40 @@
+<!--
+============================================
+; Title: Nodebucket (Week 2 - Sprint 1)
+; Author: Professor Krasso
+; Date: 20 August 2022
+; Modified By: Joel Hartung
+; Code Attribution: Angular Flex Layout
+; URL: https://github.com/angular/flex-layout
+; Code Attribution: Angular RouterLink
+; URL: https://angular.io/api/router/RouterLink
+; Code Attribution: Angular Material
+; URL: https://material.angular.io/
+;===========================================
+-->
+
 <header>
 
   <!-- navigation -->
   <nav fxFlex>
-    <mat-toolbar style="border-bottom: 15px solid #d6a800; height: 100px;" color="primary">
+    <mat-toolbar style="border-bottom: 15px solid #d3a625; height: 100px; color: white; background-color:#740001">
       <!-- navbar container -->
       <div class="navbar-container">
         <!-- logo -->
         <button class="logo" routerLink="/" mat-button>nodebucket</button>
-        <button class="navbar-link" routerLink="/" mat-button>Home</button>
         <button class="navbar-link" mat-button>About</button>
         <button class="navbar-link" mat-button>Contact Us</button>
       </div>
 
       <div fxFlex></div>
 
+      <!-- user profile menu-->
       <div>
         <button mat-icon-button [matMenuTriggerFor]="profileMenu" aria-label="User profile menu">
           <mat-icon>perm_identity</mat-icon>
         </button>
 
+        <!-- profile controls - displays user name and allows user to logout-->
         <mat-menu #profileMenu>
           <p style="padding: 10px; font-size: 16px; font-weight: lighter;">Logged in as {{ sessionName }}</p>
           <button mat-menu-item (click)="logout()">

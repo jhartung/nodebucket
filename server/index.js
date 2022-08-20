@@ -1,14 +1,28 @@
-/**
- * Require statements
- */
+/*
+============================================
+; Title: Nodebucket (Week 2 - Sprint 1)
+; Author: Professor Krasso
+; Date: 20 August 2022
+; Modified By: Joel Hartung
+; Code Attribution: Swagger UI
+; URL: https://swagger.io/tools/swagger-ui/
+;===========================================
+*/
+
+// require statements
 const express = require('express');
 const path = require('path');
 const http = require('http');
+
+// swagger require statements
 const swaggerUiExpress = require('swagger-ui-express');
 const swaggerJsdoc = require('swagger-jsdoc');
-const mongoose = require('mongoose');
-const EmployeeApi = require('./routes/employee-api');
 
+// mongoose require statements
+const mongoose = require('mongoose');
+
+
+const EmployeeApi = require('./routes/employee-api');
 const app = express(); // Express variable.
 
 
@@ -24,6 +38,7 @@ app.use('/', express.static(path.join(__dirname, '../dist/nodebucket')));
 // default server port value.
 const PORT = 3000 || process.env.PORT;
 
+// openAPI options
 const options = {
   definition: {
     openapi: "3.0.0",
@@ -37,6 +52,7 @@ const options = {
 
 const openapiSpecifications = swaggerJsdoc(options);
 
+// tells the app to use swagger /api-docs
 app.use('/api-docs', swaggerUiExpress.serve, swaggerUiExpress.setup(openapiSpecifications));
 app.use('/api', EmployeeApi);
 

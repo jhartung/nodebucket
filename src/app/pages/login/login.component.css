@@ -1,3 +1,12 @@
+/*
+============================================
+; Title: Nodebucket (Week 2 - Sprint 1)
+; Author: Professor Krasso
+; Date: 20 August 2022
+; Modified By: Joel Hartung
+;===========================================
+*/
+
 .login-container {
   width: 35%;
   margin: 10% auto;
@@ -14,7 +23,7 @@
   text-align: center;
   font-weight: lighter;
   padding: 5px;
-  color: #d6a800;
+  color: #d3a625;
 }
 
 .mat-card {
@@ -22,7 +31,7 @@
 }
 
 .mat-card-header {
-  background-color: #4F3674;
+  background-color: #740001;
   padding-left: 8%;
   padding-top: 15px;
   color: white;
