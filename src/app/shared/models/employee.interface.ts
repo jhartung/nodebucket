@@ -9,10 +9,14 @@
 ;===========================================
 */
 
+import { Item } from './item.interface'; // imports Item interface
+
 // sets and exports the employee interface
 export interface Employee {
   employeeId: string;
   firstName: string;
   lastName: string;
+  todo: Item[];
+  done: Item[];
 }
 

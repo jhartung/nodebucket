@@ -69,4 +69,69 @@ router.get('/employees/:employeeId', async(req, res) => {
   }
 })
 
+/**
+ * findAllTasks
+ */
+
+router.get('/employees/:employeeId/tasks', async(req, res) => {
+  try {
+    Employee.findOne({'employeeId': req.params.employeeId}, 'employeeId todo done', function(err, emp) {
+      if(err) {
+        console.log(err);
+        res.status(501).send({
+          'err': 'MongoDB server error: ' + err.message
+        })
+      } else {
+        console.log(emp);
+        res.json(emp);
+      }
+    })
+  } catch(e) {
+    console.log(e);
+    res.status(500).send({
+      'err': 'Internal server error: ' + e.message
+    })
+  }
+})
+
+/**
+ * createTask
+ */
+
+router.post('/employees/:employeeId/tasks', async(req, res) => {
+  try {
+    Employee.findOne({'employeeId': req.params.employeeId}, function(err, emp) {
+      if (err) {
+        console.log(err);
+          res.status(501).send({
+            'err': 'MongoDB server error: ' + err.message
+          })
+      } else {
+        console.log(emp);
+        const newTask = {
+          text: req.body.text
+        }
+
+        emp.todo.push(newTask);
+
+        emp.save(function(err, updatedEmp) {
+          if (err) {
+            console.log(err);
+            res.status(501).send({
+              'err': 'MongoDB server error: ' + err.message
+            })
+          } else {
+            console.log(updatedEmp);
+            res.json(updatedEmp);
+          }
+        })
+      }
+    })
+  } catch(e) {
+    console.log(e);
+    res.status(500).send({
+      'err': 'Internal server error: ' + e.message
+    })
+  }
+})
 module.exports = router;
