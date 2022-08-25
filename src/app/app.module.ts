@@ -32,6 +32,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
+import { ContactComponent } from './pages/contact/contact.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import {MessageModule} from 'primeng/message';
     HomeComponent,
     AuthLayoutComponent,
     BaseLayoutComponent,
-    LoginComponent
+    LoginComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,

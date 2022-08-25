@@ -21,7 +21,7 @@ export class TaskService {
   /**
    * findAllTasks
    */
-  findAllTasks(employeeId: number): Observable<any> {
+  findAllTasks(employeeId: string): Observable<any> {
     return this.http.get('/api/employees' + employeeId + '/tasks');
   }
 
@@ -29,7 +29,7 @@ export class TaskService {
 /**
  * createTask
  */
-createTask(employeeId: number, task: string): Observable<any> {
+createTask(employeeId: string, task: string): Observable<any> {
   return this.http.post('/api/employees/' + employeeId + '/tasks', {
     text: task
   })
