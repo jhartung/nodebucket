@@ -4,6 +4,8 @@
 ; Author: Professor Krasso
 ; Date: 24 August 2022
 ; Modified By: Joel Hartung
+; Code Attribution: FormBuilder
+; URL: https://angular.io/api/forms/FormBuilder
 ;===========================================
 */
 
@@ -22,6 +24,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./home.component.css']
 })
 
+// exports the HomeComponent class and defines the variable types
 export class HomeComponent implements OnInit {
   employee: Employee;
   todo: Item[];
@@ -38,6 +41,7 @@ export class HomeComponent implements OnInit {
     this.employee = {} as Employee;
     this.todo = [];
     this.done = [];
+
 
     this.taskService.findAllTasks(this.employeeId).subscribe({
       next: (res) => {
@@ -58,6 +62,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // createTask function creates a task or displays an error
   createTask() {
     const newTask = this.taskForm.controls['task'].value;
 

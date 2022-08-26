@@ -1,32 +1,38 @@
 <!--
 ============================================
-; Title: Nodebucket (Week 2 - Sprint 1)
+; Title: Nodebucket (Week 3 - Sprint 2)
 ; Author: Professor Krasso
-; Date: 20 August 2022
+; Date: 26 August 2022
 ; Modified By: Joel Hartung
+; Code Attribution: FormBuilder
+; URL: https://angular.io/api/forms/FormBuilder
+; Code Attribution: Material Design
+; URL: https://material.io/design
 ;===========================================
 -->
 
 <div fxLayout="column" class="main-welcome">
+<!-- title div -->
   <div fxFlex>
-  <h1 class="title">
-    Welcome to WEB 450's - nodebucket Project <br />
-    <span class="subtitle">
-      Pay close attention to the requirements, double and triple check the files for code attribution, and do not wait until the last minute to begin working on your tasks.
-    </span>
-  </h1>
-</div>
-
-<div fxFlex>
-  <div class="task-container mat-elevation-z4" fxLayout="column">
-    <mat-card>
-      <form [formGroup]="taskForm" (ngSubmit)="createTask(); taskForm.reset()">
-        <mat-form-field appearance="fill" class="w-100">
-          <input matInput name="task" formControlName="task" placeholder="Enter a task name..." />
-          <button type="submit" [disabled]="!taskForm.valid" mat-icon-button matSuffix>
-            <mat-icon color="primary" style="width: 36px; height: 36px; font-size: 36px;" matSuffix>add_circle</mat-icon>
+    <h1 class="title">
+      Welcome to WEB 450's - nodebucket Project <br />
+      <span class="subtitle">
+        Pay close attention to the requirements, double and triple check the files for code attribution, and do not wait until the last minute to begin working on your tasks.
+      </span>
+    </h1>
+  </div>
+<!-- task input form -->
+  <div fxFlex>
+    <div class="task-container mat-elevation-z4" fxLayout="column">
+      <mat-card>
+        <form [formGroup]="taskForm" (ngSubmit)="createTask(); taskForm.reset()">
+          <mat-form-field style="width: 100%" appearance="fill" class="w-100">
+            <input matInput name="task" formControlName="task" placeholder="Enter a task name..." />
+              <button type="submit" [disabled]="!taskForm.valid" mat-icon-button matSuffix>
+            <mat-icon style="width: 36px; height: 36px; font-size: 36px; color:#740001;" matSuffix>add_circle</mat-icon>
           </button>
         </mat-form-field>
+<!-- Error messages displayed -->
         <mat-error *ngIf="taskForm.controls['task'].hasError('required') && taskForm.controls['task'].touched">
           Task is a required field.
         </mat-error>
@@ -42,11 +48,12 @@
 </div>
 <br /><br />
 
+<!-- ToDo Div -->
 <div fxFlex>
   <div fxLayout="row" fxLayoutGap="15px" class="task-container" style="margin-top: 10px;">
     <!-- first row -->
     <div fxFlex>
-      <mat-card class="mat-elevatoin-z0">
+      <mat-card class="mat-elevation-z0">
         <mat-card-title>
           ToDo
         </mat-card-title>
@@ -70,6 +77,7 @@
       </mat-card>
     </div>
     <!-- end of first row -->
+    <!-- Done Div -->
     <div fxFlex>
       <mat-card class="mat-elevation-z0">
         <mat-card-title>Done</mat-card-title>

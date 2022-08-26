@@ -1,8 +1,8 @@
 /*
 ============================================
-; Title: Nodebucket (Week 2 - Sprint 1)
+; Title: Nodebucket (Week 3 - Sprint 2)
 ; Author: Professor Krasso
-; Date: 20 August 2022
+; Date: 26 August 2022
 ; Modified By: Joel Hartung
 ; Code Attribution: OpenAPI Specifications
 ; URL: https://swagger.io/specification/
@@ -69,12 +69,37 @@ router.get('/employees/:employeeId', async(req, res) => {
   }
 })
 
+// YAML code to describe the findAllTasks API
 /**
  * findAllTasks
+ * @openapi
+ * /api/employees/{employeeId}/tasks:
+ *   get:
+ *     tags:
+ *       - Employees
+ *     description:  API for returning all tasks by employeeId
+ *     summary: returns all tasks by employeeId
+ *     parameters:
+ *       - name: employeeId
+ *         in: path
+ *         required: true
+ *         description: Employee document id
+ *         schema:
+ *           type: string
+ *     responses:
+ *       '200':
+ *         description: Employee tasks
+ *       '401':
+ *         description: Invalid employeeId
+ *       '500':
+ *         description: Server exception
+ *       '501':
+ *         description: MongoDB exception
  */
 
+// findAllTasks API
 router.get('/employees/:employeeId/tasks', async(req, res) => {
-  try {
+  try { // returns all employee tasks or appropriate error message
     Employee.findOne({'employeeId': req.params.employeeId}, 'employeeId todo done', function(err, emp) {
       if(err) {
         console.log(err);
@@ -94,12 +119,48 @@ router.get('/employees/:employeeId/tasks', async(req, res) => {
   }
 })
 
+// YAML code to describe the createTask API
 /**
  * createTask
+ * @openapi
+ * /api/employees/{employeeId}/tasks:
+ *   post:
+ *     tags:
+ *       - Employees
+ *     name: createTask
+ *     description:  API for creating a task by employeeId
+ *     summary: creates a new task by employeeId
+ *     parameters:
+ *       - name: employeeId
+ *         in: path
+ *         required: true
+ *         description: Employee document id
+ *         schema:
+ *           type: string
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - text
+ *             properties:
+ *               text:
+ *                 type: string
+ *     responses:
+ *       '200':
+ *         description: Task creation successful
+ *       '401':
+ *         description: Invalid employeeId
+ *       '500':
+ *         description: Server exception
+ *       '501':
+ *         description: MongoDB exception
  */
 
+// createTask API specifications
 router.post('/employees/:employeeId/tasks', async(req, res) => {
-  try {
+  try { // creates an employee task or returns an appropriate error message
     Employee.findOne({'employeeId': req.params.employeeId}, function(err, emp) {
       if (err) {
         console.log(err);
@@ -134,4 +195,6 @@ router.post('/employees/:employeeId/tasks', async(req, res) => {
     })
   }
 })
+
+// exports the module
 module.exports = router;
