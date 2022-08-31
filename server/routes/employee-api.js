@@ -199,6 +199,39 @@ router.post('/employees/:employeeId/tasks', async(req, res) => {
 
 /**
  * updateTasks
+ * @openapi
+ * /api/employees/{employeeId}/tasks:
+ *   put:
+ *     tags:
+ *       - Employees
+ *     name: updateTasks
+ *     description: API to update a task
+ *     summary: updates a task
+ *     parameters:
+ *       - name: employeeId
+ *         in: path
+ *         required: true
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - todo
+ *               - done
+ *             properties:
+ *               todo:
+ *                 type: array
+ *               done:
+ *                 type: array
+ *     responses:
+ *       '200':
+ *         description: Query successful
+ *       '500':
+ *         description: Server Exception
+ *       '501':
+ *         description: MongoDB Exception
  */
 
 router.put('/employees/:employeeId/tasks', async(req, res) => {
@@ -237,6 +270,34 @@ router.put('/employees/:employeeId/tasks', async(req, res) => {
 
 /**
  * deleteTask
+ * @openapi
+ * /api/employees/{employeeId}/tasks/{taskId}:
+ *   delete:
+ *     tags:
+ *       - Employees
+ *     name: deleteTask
+ *     description: API to delete a task by id
+ *     summary: deletes a task by id
+ *     parameters:
+ *       - name: employeeId
+ *         in: path
+ *         required: true
+ *         scheme:
+ *           type: string
+ *       - name: taskId
+ *         in: path
+ *         required: true
+ *         scheme:
+ *           type: string
+ *     responses:
+ *       '200':
+ *         description: Query successful
+ *       '300':
+ *         description: Invalid taskId
+ *       '500':
+ *         description: Server Exception
+ *       '501':
+ *         description: MongoDB Exception
  */
 
 router.delete('/employees/:employeeId/tasks/:taskId', async(req, res) => {

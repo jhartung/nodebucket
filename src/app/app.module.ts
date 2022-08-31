@@ -33,6 +33,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
 import { ContactComponent } from './pages/contact/contact.component';
+import { AboutComponent } from './pages/about/about.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { ContactComponent } from './pages/contact/contact.component';
     AuthLayoutComponent,
     BaseLayoutComponent,
     LoginComponent,
-    ContactComponent
+    ContactComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
