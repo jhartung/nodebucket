@@ -34,6 +34,11 @@ import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
 import { ContactComponent } from './pages/contact/contact.component';
 import { AboutComponent } from './pages/about/about.component';
+import { ConfirmDialogComponent } from './shared/confirm-dialog/confirm-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatDividerModule } from '@angular/material/divider';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 
 @NgModule({
@@ -44,7 +49,9 @@ import { AboutComponent } from './pages/about/about.component';
     BaseLayoutComponent,
     LoginComponent,
     ContactComponent,
-    AboutComponent
+    AboutComponent,
+    ConfirmDialogComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +71,10 @@ import { AboutComponent } from './pages/about/about.component';
     MatInputModule,
     MatMenuModule,
     MessagesModule,
-    MessageModule
+    MessageModule,
+    MatDialogModule,
+    DragDropModule,
+    MatDividerModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent],
