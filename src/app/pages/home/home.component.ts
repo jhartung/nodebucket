@@ -40,7 +40,11 @@ export class HomeComponent implements OnInit {
   })
 
 
-  constructor(private fb: FormBuilder, private cookieService: CookieService, private taskService: TaskService, private dialog: MatDialog) {
+  constructor(private fb: FormBuilder,
+    private cookieService: CookieService,
+    private taskService: TaskService,
+    private dialog: MatDialog)
+    {
     this.employeeId = this.cookieService.get('session_user');
     this.employee = {} as Employee;
     this.todo = [];

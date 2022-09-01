@@ -24,7 +24,7 @@ export class TaskService {
    * findAllTasks
    */
   findAllTasks(employeeId: string): Observable<any> {
-    return this.http.get('/api/employees' + employeeId + '/tasks');
+    return this.http.get('/api/employees/' + employeeId + '/tasks');
   }
 
 
@@ -42,7 +42,7 @@ createTask(employeeId: string, task: string): Observable<any> {
  */
 
 updateTask(employeeId: string, todo: Item[], done: Item[]): Observable<any> {
-  return this.http.put('/api/employees' + employeeId + '/tasks', {
+  return this.http.put('/api/employees/' + employeeId + '/tasks', {
     todo,
     done
   })
@@ -53,7 +53,7 @@ updateTask(employeeId: string, todo: Item[], done: Item[]): Observable<any> {
  */
 
 deleteTask(employeeId: string, taskId: string): Observable<any> {
-  return this.http.delete('/api/employees' + employeeId + '/tasks/' + taskId
+  return this.http.delete('/api/employees/' + employeeId + '/tasks/' + taskId
   )
 }
 
