@@ -4,8 +4,8 @@
 ; Author: Professor Krasso
 ; Date: 30 August 2022
 ; Modified By: Joel Hartung
-; Code Attribution: Schemas
-; URL: https://mongoosejs.com/docs/guide.html
+; Code Attribution: Classes
+; URL: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes
 ;===========================================
 */
 

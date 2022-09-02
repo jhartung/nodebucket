@@ -60,6 +60,10 @@ const routes: Routes = [
         canActivate: [AuthGuard]
       }
     ]
+  },
+  {
+    path: '**',
+    redirectTo: 'session/not-found'
   }
 ];
 

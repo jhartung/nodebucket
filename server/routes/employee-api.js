@@ -197,6 +197,7 @@ router.post('/employees/:employeeId/tasks', async(req, res) => {
   }
 })
 
+// YAML code to describe updateTasks API
 /**
  * updateTasks
  * @openapi
@@ -235,7 +236,7 @@ router.post('/employees/:employeeId/tasks', async(req, res) => {
  */
 
 router.put('/employees/:employeeId/tasks', async(req, res) => {
-  try {
+  try { // API updates the task "todo" and "done" arrays, or returns an error message
     Employee.findOne({'employeeId': req.params.employeeId}, function(err, emp) {
       if (err) {
         const updateTasksMongoDbError = new BaseError('501', 'MongoDB server error', err);
@@ -247,10 +248,10 @@ router.put('/employees/:employeeId/tasks', async(req, res) => {
           todo: req.body.todo,
           done: req.body.done
         })
-
+        // saves the updated employee object
         emp.save(function(err, updatedEmp) {
           if (err) {
-            const updatedEmpMongoError = new BaseResponse('501', 'MongoDb server error', err);
+            const updatedEmpMongoError = new BaseResponse('501', 'MongoDb server error', err); // utilizes BaseResponse for HTTPcode and messages
             console.log(updatedEmpMongoError.toObject());
             res.status(501).send(updatedEmpMongoError.toObject());
           } else {
@@ -268,6 +269,7 @@ router.put('/employees/:employeeId/tasks', async(req, res) => {
   }
 })
 
+// YAML description for deleteTask API
 /**
  * deleteTask
  * @openapi
@@ -300,6 +302,7 @@ router.put('/employees/:employeeId/tasks', async(req, res) => {
  *         description: MongoDB Exception
  */
 
+// API to delete the task or return an error message
 router.delete('/employees/:employeeId/tasks/:taskId', async(req, res) => {
   try {
     Employee.findOne({'employeeId': req.params.employeeId}, function(err, emp) {
@@ -310,11 +313,11 @@ router.delete('/employees/:employeeId/tasks/:taskId', async(req, res) => {
       } else {
         console.log(emp);
 
-        const taskId = req.params.taskId;
-
+        const taskId = req.params.taskId; // taskId is required
+        // item _id is used as taskId
         const todoItem = emp.todo.find(item => item._id.toString() === taskId);
         const doneItem = emp.done.find(item => item._id.toString() === taskId);
-
+        // searches "ToDo" for the taskId and deletes it
         if (todoItem) {
           emp.todo.id(todoItem._id).remove();
 
@@ -329,10 +332,10 @@ router.delete('/employees/:employeeId/tasks/:taskId', async(req, res) => {
               res.status(200).send(updatedTodoItemSuccess.toObject());
             }
           })
-
+          // searches "Done" for the taskId and deletes it
         } else if (doneItem) {
           emp.done.id(doneItem._id).remove();
-
+// utilizes BaseResponse for error messaging and HTTPcode response
           emp.save(function(err, updatedDoneItemEmp) {
             if (err) {
               const updatedDoneItemErrResponse = new BaseResponse('501', 'MongoDB server error', err);
@@ -344,7 +347,7 @@ router.delete('/employees/:employeeId/tasks/:taskId', async(req, res) => {
               res.status(200).send(updatedDoneItemSuccessResponse.toObject());
             }
           })
-
+          // utilizes BaseResponse for error messaging and HTTPcode response
         } else {
           const invalidTaskIdResponse = new BaseResponse('300', 'Invalid taskId. ' + taskId);
           console.log(invalidTaskIdResponse.toObject());

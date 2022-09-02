@@ -1,8 +1,8 @@
 /*
 ============================================
-; Title: Nodebucket (Week 3 - Sprint 2)
+; Title: Nodebucket (Week 4 - Sprint 3)
 ; Author: Professor Krasso
-; Date: 24 August 2022
+; Date: 2 September 2022
 ; Modified By: Joel Hartung
 ; Code Attribution: FormBuilder
 ; URL: https://angular.io/api/forms/FormBuilder
@@ -50,7 +50,7 @@ export class HomeComponent implements OnInit {
     this.todo = [];
     this.done = [];
 
-
+// finds all tasks
     this.taskService.findAllTasks(this.employeeId).subscribe({
       next: (res) => {
         this.employee = res;
@@ -89,7 +89,7 @@ export class HomeComponent implements OnInit {
       }
     })
   }
-
+// deleteTask function
   deleteTask(taskId: string) {
     let dialogData = {} as DialogData;
     dialogData.header = 'Delete Record Dialog';
@@ -99,7 +99,7 @@ export class HomeComponent implements OnInit {
       data: dialogData,
       disableClose: true
     })
-
+// deletes task if user clicks "confirm"
     dialogRef.afterClosed().subscribe({
       next: (result) => {
         if (result === 'confirm') {
@@ -120,7 +120,7 @@ export class HomeComponent implements OnInit {
     })
   }
 
-
+// drag and drop event call
   drop(event: CdkDragDrop<any[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
@@ -137,6 +137,7 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  // updateTaskList function
   updateTaskList(employeeId: string, todo: Item[], done: Item[]): void {
     this.taskService.updateTask(employeeId, todo, done).subscribe({
       next: (res) => {

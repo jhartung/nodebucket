@@ -1,3 +1,15 @@
+<!--
+============================================
+; Title: Nodebucket (Week 4 - Sprint 3)
+; Author: Professor Krasso
+; Date: 2 September 2022
+; Modified By: Joel Hartung
+; Code Attribution: Dialog
+; URL: https://material.angular.io/components/dialog/overview
+;===========================================
+-->
+
+<!-- delete task confirmation dialog -->
 <h2 mat-dialog-title>{{ dialogData.header }}</h2>
 <div mat-dialog-content>
   <p>{{ dialogData.body }}</p>
@@ -6,6 +18,7 @@
 
 <mat-divider></mat-divider>
 
+<!-- confirm or cancel buttons -->
 <div mat-dialog-actions align="end">
   <button mat-raised-button matDialogClose="cancel" color="primary">No Thanks</button>
   <button mat-raised-button matDialogClose="confirm" color="primary" cdkFocusInitial>Confirm</button>

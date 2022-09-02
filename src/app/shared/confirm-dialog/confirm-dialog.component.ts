@@ -1,3 +1,15 @@
+/*
+============================================
+; Title: Nodebucket (Week 4 - Sprint 3)
+; Author: Professor Krasso
+; Date: 2 September 2022
+; Modified By: Joel Hartung
+; Code Attribution: Dialog
+; URL: https://material.angular.io/components/dialog/overview
+;===========================================
+*/
+
+// import statements
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogData } from '../models/dialog-data.interface';
